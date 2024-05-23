@@ -1,2 +1,11 @@
 # daily-interview-node
-Simple Python Puzzles from the Daily Interview Pro
+Simple Node Puzzles from the Daily Interview Pro
+
+
+Also have some other interview puzzles
+
+https://www.geeksforgeeks.org/data-structures/
+
+
+
+
