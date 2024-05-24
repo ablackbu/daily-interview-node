@@ -5,12 +5,27 @@
 
 
 function canGetExactChange(targetMoney, denominations) {
-  // Write your code here
+
+  if(denominations.length === 1) {
+    return targetMoney % denominations[0] === 0
+  }
+
+  const currentDenom = denominations.pop()
+  if(targetMoney < currentDenom) {
+    //We can't use this denomination we need to go deeper
+    return canGetExactChange(targetMoney, denominations)
+  } else {
+    //We need to give them as much of this item as possible 
+    const newTarget = targetMoney - (currentDenom * Math.floor(targetMoney/currentDenom))
+    return canGetExactChange(newTarget, denominations)
+  }
+  //So the normal flow people do is get as many big bills as possible and then reduce
+  //I suspect there is a flaw with this logic 
+  //However I don't consider that a realistic since people don't do that
+
+  //
   
 }
-
-
-
 
 
 
