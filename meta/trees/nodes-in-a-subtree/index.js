@@ -1,75 +1,51 @@
 // Add any extra import statements you may need here
 
-
 // Definition for a Node
 function Node(val, children) {
   this.val = val === undefined ? 0 : val;
   this.children = children === undefined ? [] : children;
 };
 
-
 function countOfNodes(root, queries, string) {
-
   const ans = []
   while(queries.length !== 0) {
     const [subTreeId, charToFind] = queries.shift()
     const subTree = findSubTree(root, subTreeId)
-    ans.push(foundNodeInTree(subTree, charToFind, string))
+    if(subTree) { //Until we figure out how to shortcircuit other traversal we need to do this
+      ans.push(foundNodeInTree(subTree, charToFind, string))
+    }
   }
-  
-  //We may want to store some results if we have similar subtrees, lets eval later
-  //Need to handle for all of the queries
-  //return [queries[0]].concat(countOfNodes(root, queries, string))
 
   return ans
 }
 
-function findSubTree(root, id) {
+function findSubTree(root, id) {  
+  //Possibly do some dynamic programming type of cache here if we want to burn memory to save cycles
   if(root.val === id) {
     return root
   }
 
   for(let i = 0; i < root.children.length ; ++i) {
-    const subRoot = findSubTree(root.children[i])
+    const subRoot = findSubTree(root.children[i], id)
     if(subRoot) {
       return subRoot
     }
   }
 }
 
-function foundNodeInTree(root, charToFind, string) {
-
-  console.log('>>>>> ')
-  console.log(root)
-  console.log(root.children.length)
-  console.log(string)
-  console.log(string[root.val-1])
-  
+function foundNodeInTree(root, charToFind, string) {  
   const rootVal = (string[root.val-1] === charToFind) ? 1 : 0
 
   if(root.children.length === 0) {
     return rootVal
   }
 
-
   let ans = rootVal
   for(let i = 0; i < root.children.length; ++i) {
-    console.log('<><> NESTING INTO')
-    console.log(root.children[i])
     ans+=foundNodeInTree(root.children[i], charToFind, string)
   }
 
   return ans
-
-
-    
-
-
-
-  //need to find the subtree
-
-  //Once we identify the subtree then we can count
-
 }
 
 
