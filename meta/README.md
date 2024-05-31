@@ -24,3 +24,14 @@ TODO
     - Make first as heavy node class, then replace with array approach
   - Graphs
   - Greedy Algorithms
+
+
+sort o(n log n)
+  push -> O(1)
+pop -> O(1)
+
+shift -> O(N)
+
+slice -> O(N)
+
+splice -> O(N)
