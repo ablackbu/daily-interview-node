@@ -26,8 +26,10 @@ TODO
   - Greedy Algorithms
 
 
-sort o(n log n)
-  push -> O(1)
+arr.sort o(n log n)
+
+push -> O(1)
+
 pop -> O(1)
 
 shift -> O(N)
@@ -35,3 +37,18 @@ shift -> O(N)
 slice -> O(N)
 
 splice -> O(N)
+
+concat -> o(N)
+
+indexOf -> o (n)
+
+filter o (n)
+map o(n)
+reduce o(n)
+
+join o (n)
+
+str.split => o(str length * delimeter length) so normally O(str length)
+
+
+string.startsWith(prefix) => o(prefixLength)
